@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .profile{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin-bottom: -80px;
+
+        }
+        .profile img{
+            width: 100%;
+            border-radius: 100px;
+            border-bottom: 5px solid #ED5AB3;
+        }
+        .camera{
+            width: 40px;
+            height: 40px;
+            background-color: #AC87C5;
+            font-size: 1.8rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100px;
+            position: absolute;
+            bottom: -7px;
+            right: -5px;
+        }
+        .profile-top{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(45deg,#E0AED0,#FFC7C7);
+            border-radius: 20px;
+            min-height: 100px;
+        }
+        .container{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-top">
+            <div class="profile">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+            <div class="camera">
+                <i class="fa fa-camera"></i>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

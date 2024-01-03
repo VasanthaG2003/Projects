@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace;
+}
+.container{
+    background: linear-gradient(45deg, #9AD0C2,#DDF2FD);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.card{
+    background-color: #fff;
+    padding: 20px;
+}
+.card input{
+    outline: none;
+    border: none;
+    border: 1px solid #81b7a9;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+.card label{
+    color: #35647e;
+}
+.card input[type="checkbox"]{
+    width: fit-content;
+}
+button{
+    background-color: #80B3FF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+}
+.fa-spinner{
+    font-size: 2rem;
+    animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner{
+    0%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
