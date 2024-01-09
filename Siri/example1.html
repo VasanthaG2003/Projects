@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="text" id="myspeech" placeholder="Enter Any Text">
+    <button onclick="speak()">Speak</button>
+
+    <script>
+        function speak(){
+            var texttoSpeak = document.getElementById("myspeech").value;
+            var speechSensor1 = window.speechSynthesis;
+            var utterance = new SpeechSynthesisUtterance(texttoSpeak);
+            utterance.voice = "female"
+            speechSensor1.speak(utterance)
+        }
+    </script>
+</body>
+</html>

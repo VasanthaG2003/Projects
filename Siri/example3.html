@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            padding: 30px;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-color: rgb(47, 46, 46);
+            padding: 30px;
+            overflow: hidden;
+            background: url(https://st5.depositphotos.com/35914836/64906/i/450/depositphotos_649066108-stock-photo-pink-flowers-park-spring-bloosom.jpg) no-repeat center;
+            background-size: cover;
+            margin: 30px;
+        }
+        .container video{
+            width: 100%;
+            height: 100vh;
+            border-radius: 30px !important;
+            backdrop-filter: blur(100px);
+        }
+        .controls{
+            position: absolute;
+            width: 100%;
+            bottom: 50px;
+            left: 0px;
+        }
+        .container video{
+            width: 100%;
+            height: 100vh;
+            border-radius: 30px;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 30px;
+            align-content: center;
+        }
+        button:nth-child(2){
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            outline: 5px solid #fff;
+            outline-offset: 10px;
+            border-radius: 100px;
+            border: none;
+        }
+        button:nth-child(1){
+            width: 50px;
+            height: 50px;
+            background-color: rgba(83, 78, 78, 0.344);
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+            border: none;
+            border-radius: 100px;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHp0lXjIfMX9OzFqEjyfPEmAIdvsYIZbD8eQ&usqp=CAU) no-repeat center;
+            background-size: cover;
+        }
+        button:nth-child(3){
+            width: 50px;
+            height: 50px;
+            background-color: rgba(83, 78, 78, 0.344);
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+            border: none;
+            border-radius: 100px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <video id="camera" autoplay></video>
+        <div class="controls">
+            <div class="main">
+              <button></button>
+              <button onclick="captureImage()">Capture</button>
+              <button><i class="fa-solid fa-camera-rotate"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        navigator.mediaDevices.getUserMedia({video:true})
+        .then(function (stream) {
+            var video = document.getElementById('camera');
+            video.srcObject = stream;
+        })
+        .catch(function(err) {
+            console.log('Error accessing your camera')
+        })
+        function captureImage(){
+            var video = document.getElementById('camera');
+            var canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            var context = canvas.getContext('2d');
+
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Creating Canvas to image path or url or image address
+            var CapturedImage = canvas.toDataURL('image/png');
+
+            var name = prompt("ENter image name to download")
+            //creating anchor tag for download the image
+            var downloadLink = document.createElement('a')
+            downloadLink.href = CapturedImage;
+            downloadLink.download  = `${name}.png`;
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            alert("downloaded")
+            document.body.removeChild(downloadLink);
+        }
+    </script>
+</body>
+</html>
