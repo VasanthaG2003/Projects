@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Maker</title>
+</head>
+<body>
+    <div class="container">
+        <div class="file">
+            <input type="file" multiple id="images" accept="image/*">
+            <button type="button" onclick="displayImages()">Display Images</button>
+            <div class="imageContainer" id="imageContainer">
+
+            </div>
+            <button type="button" onclick="convertPDF()">Convert</button>
+        </div>
+    </div>
+
+    <script>
+        function displayImages() {
+            var images = document.getElementById('images');
+            var container = document.getElementById('imageContainer');
+            var imageFiles = images.files;
+            
+            if(imageFiles.length === 0) {
+                alert("Please select some Images");
+                return;
+            }
+
+            Array.from(imageFiles).forEach((image) => {
+                const imageTag = document.createElement('img')
+                imageTag.src = URL.createObjectURL(image);
+                imageTag.style.width = "150px";
+                imageTag.style.margin = "5px";
+                container.appendChild(imageTag);
+            });
+        }
+
+        function convertPDF() {
+            const imageInput = document.getElementById('images');
+            const imageFiles = imageInput.files;
+
+            if(imageFiles.length === 0) {
+                alert("Please select one or more images");
+                return;
+            }
+            const pdf = new jsPDF();
+            Array.from(imageFiles).forEach((image) => {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const imageData = e.target.result;
+                    pdf.addImage(imageData, 'JPEG', 10, 10, 180, 120);
+
+                    if(index < imageInput.length-1) {
+                        pdf.addpage();
+                    }
+                    else{
+                        pdf.save('Converted.pdf');
+                        alert("pdf is done")
+                    }
+                };
+                reader.readAsDataURL(image);
+            });
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</body>
+</html>
