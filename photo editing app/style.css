@@ -17,7 +17,7 @@ nav{
     padding: 10px;
     font-size: 1.1rem;
     background: linear-gradient(45deg, #2727fb, #7B66FF);
-    color: #fff;
+    color: yellow;
     border-radius: 5px;
 }
 .file:hover, .save:hover{
